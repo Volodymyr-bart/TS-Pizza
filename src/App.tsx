@@ -9,13 +9,25 @@ const App: FC = () => {
   const addPizza = (newPizza: Pizza) => {
     setPizzaList([...pizzaList, newPizza]);
   };
-  console.log("pizzaList", pizzaList);
+
+  const handleEdit = (editPizza: Pizza) => {
+    setPizzaList([...pizzaList, editPizza]);
+  };
+  const handleDelete = (id: number) => {
+    const newList = pizzaList.filter((pizza) => id !== pizza.id);
+    setPizzaList(newList);
+  };
+
   return (
     <div className="App">
       <header></header>
       <main>
         <AddPizzaForm addPizza={addPizza} />
-        <DisplayPizzas pizzasList={pizzaList} />
+        <DisplayPizzas
+          pizzasList={pizzaList}
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+        />
       </main>
     </div>
   );
