@@ -5,13 +5,13 @@ import Pizza from "../models/Pizza";
 interface EditPizzaFormProps {
   pizza: Pizza;
   toggleEdit: () => void;
-  handleEdit: (editPizza: Pizza) => void;
+  updatePizza: (editPizza: Pizza) => void;
 }
 
 const EditPizzaForm: FC<EditPizzaFormProps> = ({
   pizza,
   toggleEdit,
-  handleEdit,
+  updatePizza,
 }) => {
   const [editPizza, setEditPizza] = useState<Pizza>(pizza);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +23,7 @@ const EditPizzaForm: FC<EditPizzaFormProps> = ({
     const { title, price, img } = editPizza;
     if (title && price && img) {
       toggleEdit();
-      handleEdit(editPizza);
+      updatePizza(editPizza);
     }
   };
   return (
@@ -51,6 +51,9 @@ const EditPizzaForm: FC<EditPizzaFormProps> = ({
           value={editPizza.img}
         />
         <button type="submit">Accept</button>
+        <button type="submit" onClick={toggleEdit}>
+          Cansell
+        </button>
       </form>
     </>
   );

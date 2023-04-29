@@ -41,7 +41,7 @@ const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
         <input
           type="text"
           name="title"
-          placeholder="Namepizz"
+          placeholder="Name pizza"
           onChange={handleChange}
           value={newPizza.title}
         />
